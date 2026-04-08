@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -42,8 +42,8 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-                        display: ['Syne', 'Sora', 'sans-serif'],
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
                     }
                 }
             }
@@ -70,6 +70,26 @@
         }
 
         .reveal { opacity: 0; transform: translateY(30px); }
+
+        .card-hover {
+            @apply transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl cursor-default hover:bg-star-blue-dark hover:text-white;
+        }
+        
+        .card-hover * {
+            @apply transition-colors duration-500;
+        }
+
+        .card-hover:hover p {
+            @apply text-white/80;
+        }
+
+        .card-hover:hover i {
+            @apply text-star-yellow;
+        }
+
+        .logo-shadow {
+            filter: drop-shadow(0 2px 8px rgba(16, 42, 107, 0.4));
+        }
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 10px; }
@@ -83,14 +103,14 @@
     <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 glass-header">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-star-yellow rounded-lg flex items-center justify-center shadow-lg">
-                    <i data-lucide="sun" class="text-star-blue-dark w-6 h-6"></i>
-                </div>
-                <span class="text-xl font-display font-extrabold tracking-tight text-star-blue-dark">
-                    STAR <span class="text-star-yellow">ENERGIA</span>
-                </span>
-            </div>
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <img 
+                    src="https://raw.githubusercontent.com/lucasholtzf/StarEnergiaSolar/56dad3d279e57b67a50019d70aeca8093056aa71/star.png" 
+                    alt="Star Energia Solar" 
+                    class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 logo-shadow"
+                    referrerpolicy="no-referrer"
+                >
+            </a>
 
             <nav class="hidden lg:flex items-center gap-8">
                 <a href="#inicio" class="text-sm font-semibold text-star-blue-dark/80 hover:text-star-blue-dark transition-colors">Início</a>
@@ -108,12 +128,12 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative min-h-screen flex items-center pt-20">
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img 
                 src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=2000" 
                 alt="Painéis Solares" 
-                class="w-full h-full object-cover"
+                class="w-full h-[120%] object-cover hero-bg"
                 referrerpolicy="no-referrer"
             >
             <div class="absolute inset-0 bg-gradient-to-r from-star-blue-dark/90 via-star-blue-dark/60 to-transparent"></div>
@@ -254,7 +274,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[600px]" id="bento-grid">
-                <div class="md:col-span-2 md:row-span-2 bg-star-blue-dark rounded-3xl p-10 text-white flex flex-col justify-between bento-item">
+                <div class="md:col-span-2 md:row-span-2 bg-star-blue-dark rounded-3xl p-10 text-white flex flex-col justify-between bento-item card-hover">
                     <div>
                         <div class="w-14 h-14 bg-star-yellow rounded-2xl flex items-center justify-center mb-8">
                             <i data-lucide="shield-check" class="text-star-blue-dark w-8 h-8"></i>
@@ -272,7 +292,7 @@
                     </div>
                 </div>
 
-                <div class="md:col-span-2 bg-star-gray-light/50 rounded-3xl p-8 flex items-center gap-6 bento-item">
+                <div class="md:col-span-2 bg-star-gray-light/50 rounded-3xl p-8 flex items-center gap-6 bento-item card-hover">
                     <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm">
                         <i data-lucide="zap" class="text-star-yellow w-8 h-8"></i>
                     </div>
@@ -282,7 +302,7 @@
                     </div>
                 </div>
 
-                <div class="bg-star-yellow rounded-3xl p-8 flex flex-col justify-between bento-item">
+                <div class="bg-star-yellow rounded-3xl p-8 flex flex-col justify-between bento-item card-hover">
                     <i data-lucide="leaf" class="text-star-blue-dark w-10 h-10"></i>
                     <div>
                         <h4 class="text-xl font-bold mb-1">100% Limpa</h4>
@@ -290,7 +310,7 @@
                     </div>
                 </div>
 
-                <div class="bg-star-blue-medium rounded-3xl p-8 text-white flex flex-col justify-between bento-item">
+                <div class="bg-star-blue-medium rounded-3xl p-8 text-white flex flex-col justify-between bento-item card-hover">
                     <i data-lucide="trending-up" class="text-white w-10 h-10"></i>
                     <div>
                         <h4 class="text-xl font-bold mb-1">Valorização</h4>
@@ -310,7 +330,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-colors reveal">
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 card-hover reveal">
                     <h3 class="text-2xl mb-4 text-star-yellow">Instalação em Uberlândia</h3>
                     <p class="text-white/70 mb-8">Projetos completos para residências e empresas com foco em máxima eficiência energética.</p>
                     <ul class="space-y-4 mb-10">
@@ -330,7 +350,7 @@
                     <a href="https://wa.me/5534988493077" target="_blank" class="btn-primary w-full">Solicitar Orçamento</a>
                 </div>
 
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-colors reveal">
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 card-hover reveal">
                     <h3 class="text-2xl mb-4 text-star-yellow">Energia Solar Residencial</h3>
                     <p class="text-white/70 mb-8">Leve economia para sua família com sistemas que se pagam em poucos anos.</p>
                     <ul class="space-y-4 mb-10">
@@ -350,7 +370,7 @@
                     <a href="https://wa.me/5534988493077" target="_blank" class="btn-primary w-full">Solicitar Orçamento</a>
                 </div>
 
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-colors reveal">
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 card-hover reveal">
                     <h3 class="text-2xl mb-4 text-star-yellow">Venda de Painéis Solares</h3>
                     <p class="text-white/70 mb-8">Trabalhamos com as melhores marcas do mercado mundial para garantir durabilidade.</p>
                     <ul class="space-y-4 mb-10">
@@ -504,13 +524,13 @@
     <footer class="bg-white py-12 border-t border-star-gray-light">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-star-yellow rounded flex items-center justify-center">
-                        <i data-lucide="sun" class="text-star-blue-dark w-5 h-5"></i>
-                    </div>
-                    <span class="text-lg font-display font-extrabold tracking-tight text-star-blue-dark uppercase">
-                        Star Energia Solar
-                    </span>
+                <div class="flex items-center">
+                    <img 
+                        src="https://raw.githubusercontent.com/lucasholtzf/StarEnergiaSolar/56dad3d279e57b67a50019d70aeca8093056aa71/star.png" 
+                        alt="Star Energia Solar" 
+                        class="h-10 w-auto object-contain logo-shadow"
+                        referrerpolicy="no-referrer"
+                    >
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-8 text-sm font-medium text-star-blue-dark/60">
@@ -552,11 +572,23 @@
 
         // Hero Animations
         gsap.from("#hero-content > *", {
-            y: 50,
+            y: 60,
             opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power3.out"
+            duration: 1.4,
+            stagger: 0.15,
+            ease: "expo.out"
+        });
+
+        // Parallax effect for Hero Image
+        gsap.to(".hero-bg", {
+            scrollTrigger: {
+                trigger: "#inicio",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            },
+            y: 100,
+            ease: "none"
         });
 
         // Scroll Reveal Animations
@@ -565,36 +597,38 @@
             gsap.to(el, {
                 scrollTrigger: {
                     trigger: el,
-                    start: "top 85%",
+                    start: "top 90%",
                     toggleActions: "play none none none"
                 },
                 y: 0,
                 opacity: 1,
-                duration: 0.8,
-                ease: "power2.out"
+                duration: 1.5,
+                ease: "expo.out"
             });
         });
 
-        // Bento Grid Stagger
+        // Bento Grid Stagger - More polished
         gsap.from(".bento-item", {
             scrollTrigger: {
                 trigger: "#bento-grid",
-                start: "top 80%"
+                start: "top 85%"
             },
-            scale: 0.9,
+            y: 40,
             opacity: 0,
-            duration: 0.6,
+            duration: 1.2,
             stagger: 0.1,
-            ease: "back.out(1.7)"
+            ease: "expo.out"
         });
 
         // Header Scroll Effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
-                header.classList.add('shadow-lg');
+                header.classList.add('shadow-lg', 'py-2');
+                header.classList.remove('py-4');
             } else {
-                header.classList.remove('shadow-lg');
+                header.classList.remove('shadow-lg', 'py-2');
+                header.classList.add('py-4');
             }
         });
     </script>
