@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Energia Solar - Uberlândia | Economize até 95% na Conta de Luz</title>
+    <meta name="description" content="A Star Energia Solar é especialista em instalação de painéis fotovoltaicos em Uberlândia e região. Reduza seus custos e valorize seu imóvel.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        star: {
+                            blue: {
+                                dark: '#102A6B',
+                                medium: '#37549C',
+                                secondary: '#1C3586',
+                            },
+                            yellow: {
+                                DEFAULT: '#F6A910',
+                                cta: '#F7A719',
+                            },
+                            gray: {
+                                light: '#E6E7EB',
+                            }
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        display: ['Syne', 'Sora', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            html { scroll-behavior: smooth; }
+            body { @apply bg-white text-star-blue-dark font-sans antialiased overflow-x-hidden; }
+            h1, h2, h3, h4 { @apply font-display font-bold; }
+        }
+
+        .glass-header {
+            @apply bg-white/80 backdrop-blur-md border-b border-star-gray-light/30;
+        }
+
+        .btn-primary {
+            @apply bg-star-yellow-cta hover:bg-star-yellow text-star-blue-dark font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 inline-flex items-center justify-center;
+        }
+
+        .btn-secondary {
+            @apply border-2 border-star-blue-dark text-star-blue-dark hover:bg-star-blue-dark hover:text-white font-bold py-4 px-8 rounded-full transition-all duration-300 inline-flex items-center justify-center;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #102A6B; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1C3586; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-header">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-star-yellow rounded-lg flex items-center justify-center shadow-lg">
+                    <i data-lucide="sun" class="text-star-blue-dark w-6 h-6"></i>
+                </div>
+                <span class="text-xl font-display font-extrabold tracking-tight text-star-blue-dark">
+                    STAR <span class="text-star-yellow">ENERGIA</span>
+                </span>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#inicio" class="text-sm font-semibold text-star-blue-dark/80 hover:text-star-blue-dark transition-colors">Início</a>
+                <a href="#beneficios" class="text-sm font-semibold text-star-blue-dark/80 hover:text-star-blue-dark transition-colors">Benefícios</a>
+                <a href="#solucoes" class="text-sm font-semibold text-star-blue-dark/80 hover:text-star-blue-dark transition-colors">Soluções</a>
+                <a href="#diferenciais" class="text-sm font-semibold text-star-blue-dark/80 hover:text-star-blue-dark transition-colors">Diferenciais</a>
+                <a href="#como-funciona" class="text-sm font-semibold text-star-blue-dark/80 hover:text-star-blue-dark transition-colors">Como funciona</a>
+                <a href="#faq" class="text-sm font-semibold text-star-blue-dark/80 hover:text-star-blue-dark transition-colors">FAQ</a>
+            </nav>
+
+            <a href="https://wa.me/5534988493077?text=Olá,%20quero%20solicitar%20um%20orçamento%20de%20energia%20solar." target="_blank" class="hidden sm:flex btn-primary !py-2.5 !px-6 !text-sm">
+                Solicitar Orçamento
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=2000" 
+                alt="Painéis Solares" 
+                class="w-full h-full object-cover"
+                referrerpolicy="no-referrer"
+            >
+            <div class="absolute inset-0 bg-gradient-to-r from-star-blue-dark/90 via-star-blue-dark/60 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div id="hero-content" class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 bg-star-yellow/20 backdrop-blur-sm border border-star-yellow/30 px-4 py-2 rounded-full mb-6">
+                    <i data-lucide="map-pin" class="w-4 h-4 text-star-yellow"></i>
+                    <span class="text-xs font-bold text-star-yellow uppercase tracking-wider">Uberlândia e Região</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl text-white leading-[1.1] mb-6">
+                    Reduza em até <span class="text-star-yellow">95%</span> sua conta de luz com energia solar
+                </h1>
+                
+                <p class="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-2xl">
+                    Soluções completas em energia fotovoltaica para residências e empresas em Uberlândia. Projeto personalizado, instalação profissional e economia real.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.me/5534988493077?text=Olá,%20quero%20solicitar%20um%20orçamento%20de%20energia%20solar." target="_blank" class="btn-primary">
+                        <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
+                        Orçamento pelo WhatsApp
+                    </a>
+                    <a href="#solucoes" class="btn-secondary !border-white !text-white hover:!bg-white hover:!text-star-blue-dark">
+                        Conhecer Soluções
+                    </a>
+                </div>
+
+                <div class="mt-12 flex flex-wrap gap-6">
+                    <div class="flex items-center gap-2 text-white/90">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-star-yellow"></i>
+                        <span class="text-sm font-medium">Projeto Personalizado</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-white/90">
+                        <i data-lucide="zap" class="w-5 h-5 text-star-yellow"></i>
+                        <span class="text-sm font-medium">Instalação Profissional</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-white/90">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-star-yellow"></i>
+                        <span class="text-sm font-medium">Retorno Garantido</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Bar -->
+    <section id="beneficios" class="bg-star-blue-dark py-12 relative z-20 -mt-10 mx-6 rounded-2xl shadow-2xl reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center md:text-left border-l-0 md:border-l border-white/10 pl-0 md:pl-8 first:border-0">
+                    <h3 class="text-3xl font-display font-bold text-star-yellow mb-1">Até 95%</h3>
+                    <p class="text-white/60 text-sm font-medium uppercase tracking-wider">De economia na conta</p>
+                </div>
+                <div class="text-center md:text-left border-l-0 md:border-l border-white/10 pl-0 md:pl-8">
+                    <h3 class="text-3xl font-display font-bold text-star-yellow mb-1">25 Anos</h3>
+                    <p class="text-white/60 text-sm font-medium uppercase tracking-wider">De vida útil estimada</p>
+                </div>
+                <div class="text-center md:text-left border-l-0 md:border-l border-white/10 pl-0 md:pl-8">
+                    <h3 class="text-3xl font-display font-bold text-star-yellow mb-1">Uberlândia</h3>
+                    <p class="text-white/60 text-sm font-medium uppercase tracking-wider">Atendimento local e ágil</p>
+                </div>
+                <div class="text-center md:text-left border-l-0 md:border-l border-white/10 pl-0 md:pl-8">
+                    <h3 class="text-3xl font-display font-bold text-star-yellow mb-1">Suporte</h3>
+                    <p class="text-white/60 text-sm font-medium uppercase tracking-wider">Especializado do início ao fim</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Whom Section -->
+    <section id="solucoes" class="py-20 md:py-32 bg-star-gray-light/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl mb-6 text-star-blue-dark">Energia solar para todos os momentos</h2>
+                <p class="text-lg text-star-blue-dark/70">Seja para sua casa ou para seu negócio, temos o projeto ideal para maximizar sua economia.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Residential -->
+                <div class="group relative overflow-hidden rounded-3xl reveal">
+                    <img 
+                        src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80&w=1000" 
+                        alt="Energia Solar Residencial" 
+                        class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
+                        referrerpolicy="no-referrer"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-star-blue-dark via-star-blue-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-10 text-white">
+                        <div class="w-12 h-12 bg-star-yellow rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="home" class="text-star-blue-dark w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-3xl mb-4">Para sua Residência</h3>
+                        <p class="text-white/80 mb-8 max-w-md">Valorize seu imóvel e elimine gastos desnecessários com a conta de luz. Conforto e sustentabilidade para sua família.</p>
+                        <a href="https://wa.me/5534988493077?text=Olá,%20quero%20solicitar%20um%20orçamento%20de%20energia%20solar%20residencial." target="_blank" class="btn-primary !bg-white !text-star-blue-dark hover:!bg-star-yellow">
+                            Solicitar Orçamento Residencial
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Commercial -->
+                <div class="group relative overflow-hidden rounded-3xl reveal">
+                    <img 
+                        src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80&w=1000" 
+                        alt="Energia Solar Comercial" 
+                        class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
+                        referrerpolicy="no-referrer"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-star-blue-dark via-star-blue-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-10 text-white">
+                        <div class="w-12 h-12 bg-star-yellow rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="building-2" class="text-star-blue-dark w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-3xl mb-4">Para sua Empresa</h3>
+                        <p class="text-white/80 mb-8 max-w-md">Reduza custos operacionais e aumente a competitividade do seu negócio com energia limpa e renovável.</p>
+                        <a href="https://wa.me/5534988493077?text=Olá,%20quero%20solicitar%20um%20orçamento%20de%20energia%20solar%20empresarial." target="_blank" class="btn-primary !bg-white !text-star-blue-dark hover:!bg-star-yellow">
+                            Solicitar Orçamento Empresarial
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials - Bento Grid -->
+    <section id="diferenciais" class="py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-5xl mb-6 text-star-blue-dark">Por que escolher a Star Energia Solar?</h2>
+                    <p class="text-lg text-star-blue-dark/70">Unimos tecnologia de ponta com atendimento próximo para entregar o melhor resultado.</p>
+                </div>
+                <a href="https://wa.me/5534988493077" target="_blank" class="btn-secondary">
+                    Falar com Especialista
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[600px]" id="bento-grid">
+                <div class="md:col-span-2 md:row-span-2 bg-star-blue-dark rounded-3xl p-10 text-white flex flex-col justify-between bento-item">
+                    <div>
+                        <div class="w-14 h-14 bg-star-yellow rounded-2xl flex items-center justify-center mb-8">
+                            <i data-lucide="shield-check" class="text-star-blue-dark w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl mb-4">Solução Completa</h3>
+                        <p class="text-white/70 text-lg">Cuidamos de tudo para você: desde o planejamento técnico e fornecimento dos equipamentos até a instalação e suporte pós-venda.</p>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-white/10 flex items-center gap-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://i.pravatar.cc/100?img=11" class="w-10 h-10 rounded-full border-2 border-star-blue-dark" alt="User" referrerpolicy="no-referrer">
+                            <img src="https://i.pravatar.cc/100?img=12" class="w-10 h-10 rounded-full border-2 border-star-blue-dark" alt="User" referrerpolicy="no-referrer">
+                            <img src="https://i.pravatar.cc/100?img=13" class="w-10 h-10 rounded-full border-2 border-star-blue-dark" alt="User" referrerpolicy="no-referrer">
+                        </div>
+                        <span class="text-sm font-medium text-white/60">+ de 500 clientes satisfeitos em Uberlândia</span>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 bg-star-gray-light/50 rounded-3xl p-8 flex items-center gap-6 bento-item">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm">
+                        <i data-lucide="zap" class="text-star-yellow w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Instalação Rápida</h4>
+                        <p class="text-star-blue-dark/60">Equipe técnica própria e altamente treinada para garantir agilidade.</p>
+                    </div>
+                </div>
+
+                <div class="bg-star-yellow rounded-3xl p-8 flex flex-col justify-between bento-item">
+                    <i data-lucide="leaf" class="text-star-blue-dark w-10 h-10"></i>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">100% Limpa</h4>
+                        <p class="text-star-blue-dark/70 text-sm">Energia sustentável.</p>
+                    </div>
+                </div>
+
+                <div class="bg-star-blue-medium rounded-3xl p-8 text-white flex flex-col justify-between bento-item">
+                    <i data-lucide="trending-up" class="text-white w-10 h-10"></i>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Valorização</h4>
+                        <p class="text-white/70 text-sm">Imóvel mais valorizado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-20 md:py-32 bg-star-blue-dark text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+                <h2 class="text-3xl md:text-5xl mb-6">Nossos Serviços</h2>
+                <p class="text-lg text-white/60">Especialistas em transformar o sol em economia para você.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-colors reveal">
+                    <h3 class="text-2xl mb-4 text-star-yellow">Instalação em Uberlândia</h3>
+                    <p class="text-white/70 mb-8">Projetos completos para residências e empresas com foco em máxima eficiência energética.</p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Dimensionamento preciso
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Equipamentos premium
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Homologação na concessionária
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5534988493077" target="_blank" class="btn-primary w-full">Solicitar Orçamento</a>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-colors reveal">
+                    <h3 class="text-2xl mb-4 text-star-yellow">Energia Solar Residencial</h3>
+                    <p class="text-white/70 mb-8">Leve economia para sua família com sistemas que se pagam em poucos anos.</p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Instalação em telhados
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Monitoramento via App
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Suporte técnico vitalício
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5534988493077" target="_blank" class="btn-primary w-full">Solicitar Orçamento</a>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-colors reveal">
+                    <h3 class="text-2xl mb-4 text-star-yellow">Venda de Painéis Solares</h3>
+                    <p class="text-white/70 mb-8">Trabalhamos com as melhores marcas do mercado mundial para garantir durabilidade.</p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Painéis de alta eficiência
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Inversores de ponta
+                        </li>
+                        <li class="flex items-center gap-3 text-sm">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-star-yellow shrink-0"></i>
+                            Garantia de fábrica
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5534988493077" target="_blank" class="btn-primary w-full">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="como-funciona" class="py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+                <h2 class="text-3xl md:text-5xl mb-6 text-star-blue-dark">Como funciona o processo?</h2>
+                <p class="text-lg text-star-blue-dark/70">Simples, transparente e eficiente. Do primeiro contato à economia real.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div class="relative group reveal">
+                    <div class="bg-star-gray-light/30 rounded-3xl p-8 h-full transition-all duration-300 group-hover:bg-star-blue-dark group-hover:text-white">
+                        <span class="text-4xl font-display font-black text-star-yellow/30 group-hover:text-star-yellow/50 block mb-6">01</span>
+                        <h4 class="text-xl font-bold mb-3">Contato</h4>
+                        <p class="text-star-blue-dark/60 group-hover:text-white/70 text-sm leading-relaxed">Você nos chama no WhatsApp e envia sua conta de luz.</p>
+                    </div>
+                </div>
+                <div class="relative group reveal">
+                    <div class="bg-star-gray-light/30 rounded-3xl p-8 h-full transition-all duration-300 group-hover:bg-star-blue-dark group-hover:text-white">
+                        <span class="text-4xl font-display font-black text-star-yellow/30 group-hover:text-star-yellow/50 block mb-6">02</span>
+                        <h4 class="text-xl font-bold mb-3">Análise</h4>
+                        <p class="text-star-blue-dark/60 group-hover:text-white/70 text-sm leading-relaxed">Estudamos sua necessidade e criamos o projeto ideal.</p>
+                    </div>
+                </div>
+                <div class="relative group reveal">
+                    <div class="bg-star-gray-light/30 rounded-3xl p-8 h-full transition-all duration-300 group-hover:bg-star-blue-dark group-hover:text-white">
+                        <span class="text-4xl font-display font-black text-star-yellow/30 group-hover:text-star-yellow/50 block mb-6">03</span>
+                        <h4 class="text-xl font-bold mb-3">Projeto</h4>
+                        <p class="text-star-blue-dark/60 group-hover:text-white/70 text-sm leading-relaxed">Apresentamos a solução personalizada e o retorno financeiro.</p>
+                    </div>
+                </div>
+                <div class="relative group reveal">
+                    <div class="bg-star-gray-light/30 rounded-3xl p-8 h-full transition-all duration-300 group-hover:bg-star-blue-dark group-hover:text-white">
+                        <span class="text-4xl font-display font-black text-star-yellow/30 group-hover:text-star-yellow/50 block mb-6">04</span>
+                        <h4 class="text-xl font-bold mb-3">Instalação</h4>
+                        <p class="text-star-blue-dark/60 group-hover:text-white/70 text-sm leading-relaxed">Nossa equipe realiza a instalação técnica e profissional.</p>
+                    </div>
+                </div>
+                <div class="relative group reveal">
+                    <div class="bg-star-gray-light/30 rounded-3xl p-8 h-full transition-all duration-300 group-hover:bg-star-blue-dark group-hover:text-white">
+                        <span class="text-4xl font-display font-black text-star-yellow/30 group-hover:text-star-yellow/50 block mb-6">05</span>
+                        <h4 class="text-xl font-bold mb-3">Economia</h4>
+                        <p class="text-star-blue-dark/60 group-hover:text-white/70 text-sm leading-relaxed">Seu sistema é ligado e você começa a economizar na hora.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 md:py-32 bg-star-gray-light/20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl mb-6 text-star-blue-dark">Dúvidas Frequentes</h2>
+                <p class="text-lg text-star-blue-dark/70">Tudo o que você precisa saber sobre energia solar.</p>
+            </div>
+
+            <div class="space-y-4">
+                <details class="group bg-white rounded-2xl border border-star-gray-light reveal">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <span class="font-bold text-lg pr-4">Energia solar realmente reduz a conta de luz?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-star-yellow transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-star-blue-dark/70 leading-relaxed">
+                        Sim! Você pode reduzir até 95% do valor da sua fatura, pagando apenas a taxa mínima de disponibilidade da concessionária.
+                    </div>
+                </details>
+                <details class="group bg-white rounded-2xl border border-star-gray-light reveal">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <span class="font-bold text-lg pr-4">Em quanto tempo o sistema começa a gerar economia?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-star-yellow transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-star-blue-dark/70 leading-relaxed">
+                        Imediatamente após a instalação e homologação pela concessionária. O retorno do investimento (Payback) costuma ocorrer entre 3 a 5 anos.
+                    </div>
+                </details>
+                <details class="group bg-white rounded-2xl border border-star-gray-light reveal">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <span class="font-bold text-lg pr-4">A Star atende apenas Uberlândia?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-star-yellow transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-star-blue-dark/70 leading-relaxed">
+                        Atendemos Uberlândia e todas as cidades da região com a mesma agilidade e qualidade.
+                    </div>
+                </details>
+                <details class="group bg-white rounded-2xl border border-star-gray-light reveal">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <span class="font-bold text-lg pr-4">O projeto é personalizado?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-star-yellow transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-star-blue-dark/70 leading-relaxed">
+                        Com certeza. Cada sistema é dimensionado de acordo com o seu consumo histórico e as características do seu telhado ou terreno.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 md:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-star-blue-dark z-0">
+           <img 
+            src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=2000" 
+            alt="Solar Background" 
+            class="w-full h-full object-cover opacity-20"
+            referrerpolicy="no-referrer"
+          >
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="max-w-3xl mx-auto reveal">
+                <h2 class="text-4xl md:text-6xl text-white mb-8">Solicite seu orçamento e descubra quanto você pode economizar</h2>
+                <p class="text-xl text-white/70 mb-12">Projeto personalizado, instalação profissional e atendimento especializado em Uberlândia e região.</p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/5534988493077" target="_blank" class="btn-primary !px-12 !py-5 !text-lg w-full sm:w-auto">
+                        <i data-lucide="message-circle" class="w-6 h-6 mr-2"></i>
+                        Chamar no WhatsApp
+                    </a>
+                    <a href="tel:34988493077" class="btn-secondary !border-white !text-white hover:!bg-white hover:!text-star-blue-dark !px-12 !py-5 !text-lg w-full sm:w-auto">
+                        <i data-lucide="phone" class="w-6 h-6 mr-2"></i>
+                        Ligar Agora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-star-gray-light">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-star-yellow rounded flex items-center justify-center">
+                        <i data-lucide="sun" class="text-star-blue-dark w-5 h-5"></i>
+                    </div>
+                    <span class="text-lg font-display font-extrabold tracking-tight text-star-blue-dark uppercase">
+                        Star Energia Solar
+                    </span>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-8 text-sm font-medium text-star-blue-dark/60">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-star-yellow"></i>
+                        Uberlândia e Região
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4 text-star-yellow"></i>
+                        (34) 98849-3077
+                    </div>
+                </div>
+
+                <p class="text-xs text-star-blue-dark/40 font-medium">
+                    &copy; 2026 Star Energia Solar. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a 
+        href="https://wa.me/5534988493077" 
+        target="_blank" 
+        class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 group"
+    >
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+        <span class="absolute right-full mr-4 bg-white text-star-blue-dark px-4 py-2 rounded-lg text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            Falar com Especialista
+        </span>
+    </a>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animations
+        gsap.from("#hero-content > *", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // Scroll Reveal Animations
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+
+        // Bento Grid Stagger
+        gsap.from(".bento-item", {
+            scrollTrigger: {
+                trigger: "#bento-grid",
+                start: "top 80%"
+            },
+            scale: 0.9,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(1.7)"
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
